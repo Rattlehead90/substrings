@@ -3,17 +3,16 @@ require "pry-byebug"
 DICTIONARY = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"] #Example from the Odin Project
 
 def substrings(string, dictionary)
-  string.downcase!
-  hash = dictionary.reduce(Hash.new(0)) do |result, substring| 
-    binding.pry
-    if string.include?(substring) 
-      result[substring] += 1
+  instances_hash = dictionary.reduce(Hash.new(0)) do |result, substring| 
+    instances_of_substring = string.downcase.scan(substring).length
+    if instances_of_substring > 0
+      result[substring] += instances_of_substring
       result
     else
       result
     end
   end
-  return hash
+  return instances_hash
 end
 
 def terminal_interface_s 
