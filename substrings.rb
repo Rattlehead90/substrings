@@ -3,8 +3,9 @@ require "pry-byebug"
 DICTIONARY = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"] #Example from the Odin Project
 
 def substrings(string, dictionary)
-
+  string.downcase!
   hash = dictionary.reduce(Hash.new(0)) do |result, substring| 
+    binding.pry
     if string.include?(substring) 
       result[substring] += 1
       result
